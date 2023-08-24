@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Task 1.2P SIT 120 Part2</title>
+    <link rel="icon" type="image/x-icon" href="Fav.png">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <link rel="stylesheet" href="Task1.2Part2.css">
+</head>
+<body>
+    <div class="top"><h1 id="Title">Welcome to Part 1 of Task 1.2P</h1></div>
+
+    <div class="left">
+
+        <h2>Javascript Strings</h2>
+        <p>The length of the Title is:</p>
+        <p id="demo"></p>
+        <button onclick="FixTitle()">Fix Title</button>
+        <br>
+        <button onclick="makeTitleUpper()">Make Title Uppercase</button>
+        <br>
+        <button onclick="makeTitleLower()">Make Title Lowercase</button>
+        <br>
+        <button onclick="PadTitleFront();">Pad the Title Front</button>
+        <br>
+        <button onclick="PadTitleBack(); ">Pad the Title Back</button>
+    </div>
+    <div class="main">
+        <p>List of Array Items:</p>
+        <p id="ArrayList"></p>
+        <button onclick="AddFunctions();">Add Functions to Array</button>
+        <button onclick="RemoveArray();">Remove Last item of Array</button>
+        <br /><br /><br /><br /><br />
+        <p>Todays Date is:</p>
+        <p id="Date"></p>
+        <p>The time is currently:</p>
+        <p id="Time"></p>
+    </div>
+
+    <div class="right">
+        <h2 id="TitleNumber">Numbers Javascript</h2>
+        <h2>JavaScript Numbers</h2>
+        <p>Half of the title is:</p>
+        <p id="divide"></p>
+        <p>Is the title less then 33 Characters in Length?</p>
+        <p id="lessthan"></p>
+        <p>The length of the Title plus half is:</p>
+        <p id="Add"></p>
+        <p>That doesn't seem right does it? How about this:</p>
+        <p id="AddTrue"></p>
+        <p>The title is less than the max Integer by:</p>
+        <p id="MaxLess"></p>
+        
+    </div>
+
+    <script>
+        //string scripts
+        let text = document.getElementById("Title").innerHTML;
+        document.getElementById("demo").innerHTML = text.length;
+
+        function TitleLength() {
+            text = document.getElementById("Title").innerHTML;
+            document.getElementById("demo").innerHTML = text.length;
+        }
+
+        function makeTitleUpper() {
+            text = document.getElementById("Title").innerHTML;
+            document.getElementById("Title").innerHTML = text.toUpperCase();
+        }
+
+        function makeTitleLower() {
+            text = document.getElementById("Title").innerHTML;
+            document.getElementById("Title").innerHTML = text.toLowerCase();
+        }
+
+        function FixTitle() {
+            text = document.getElementById("Title").innerHTML;
+            document.getElementById("Title").innerHTML = text.replace(/Part 1/g, "Part 2");
+        }
+
+        function PadTitleFront() {
+            text = document.getElementById("Title").innerHTML;
+            document.getElementById("Title").innerHTML = text.padStart(34, "|");
+            UpdateText();
+        }
+
+        function PadTitleBack() {
+            text = document.getElementById("Title").innerHTML;
+            document.getElementById("Title").innerHTML = text.padEnd(38, "|");
+            UpdateText();
+        }
+
+        function UpdateText() {
+            DivideTitleLength();
+            TitleLength();
+            IsLength();
+            Adding();
+        }
+        //number scripts
+        //display half the titles length
+        text = document.getElementById("Title").innerHTML.length;
+        document.getElementById("divide").innerHTML = text / 2;
+
+        function DivideTitleLength() {
+            text = document.getElementById("Title").innerHTML.length;
+            document.getElementById("divide").innerHTML = text / 2;
+        }
+        text = document.getElementById("Title").innerHTML.length;
+        document.getElementById("lessthan").innerHTML = (text < 33);
+        function IsLength() {
+            text = document.getElementById("Title").innerHTML.length;
+            document.getElementById("lessthan").innerHTML = (text < 33);
+        }
+        let x = document.getElementById("Title").innerHTML.length;
+        let y = document.getElementById("divide").innerHTML;
+        document.getElementById("Add").innerHTML = x + y;
+        document.getElementById("AddTrue").innerHTML = Number(x) + Number(y);
+        document.getElementById("MaxLess").innerHTML = Number.MAX_VALUE - Number(x);
+        function Adding() {
+            let x = document.getElementById("Title").innerHTML.length;
+            let y = document.getElementById("divide").innerHTML;
+            document.getElementById("Add").innerHTML = x + y;
+            document.getElementById("AddTrue").innerHTML = Number(x) + Number(y);
+            document.getElementById("MaxLess").innerHTML = Number.MAX_VALUE - Number(x);
+            document.getElementById("ArrayList").innerHTML = JavascriptTypes.toString();
+        }
+      
+        const JavascriptTypes = ["Strings", "Numbers", "Dates", "Arrays"];
+        document.getElementById("ArrayList").innerHTML = JavascriptTypes.toString();
+        function AddFunctions() {
+            JavascriptTypes.push("Functions");
+            Adding();
+        }
+        function RemoveArray() {
+            JavascriptTypes.pop();
+            Adding();
+        }
+        const d = new Date();
+        const month = d.getMonth() + 1;
+        const dateNow = Date.now();
+        document.getElementById("Date").innerHTML = d.getDate() + "-" + month + "-" + d.getFullYear();
+        document.getElementById("Time").innerHTML = d.getHours() + ":" + d.getMinutes();
+
+    </script>
+
+</body>
+</html>
+
